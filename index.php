@@ -12,10 +12,11 @@ include('includes/haut.inc.php');
                                     $query = 'SELECT * FROM messages WHERE id='.$_GET['id'];
                                     $stmt = $pdo->query($query);
 
-                                    while ($data = $stmt->fetch()) {
+                                    while ($data = $stmt->fetch()) 
+                                    {
                                             $contenu=$data['contenu'];
                                             }
-                                        }
+                                    }
                                 ?>
                             <textarea id="message" name="message" class="form-control" placeholder="Message"><?php  if(isset($contenu) && !empty($contenu)) {echo $contenu;  } ?></textarea>                  
                             <input type="hidden" name="id" value="<?php if(isset($_GET['id']) && !empty($_GET['id'])) { echo $_GET['id'];} ?>">
