@@ -50,9 +50,20 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
+                        <?php if($connected==false) {?>
                         <a href="connexion.php">Connexion</a>
+                        <?php } else { ?>
+                        <a href="deconnexion.php">Déconnexion</a>
+                        <?php } ?>
                 </ul>
+                <?php if($connected==true) {?>
+            <div class="row text-center" style="color:white;font-size:2em">
+                Hello <?php echo $pseudo ?> !
             </div>
+            <?php } ?>
+            </div>
+
+            
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->

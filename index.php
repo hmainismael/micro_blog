@@ -23,7 +23,7 @@ include('includes/haut.inc.php');
                         </div>
                     </div>
                     <div class="col-sm-2">
-                        <button type="submit" class="btn btn-success btn-lg">Envoyer</button>
+                        <button type="submit" class="btn btn-success btn-lg" <?php if($connected==false) {?>disabled<?php }?> >Envoyer</button>
                     </div>                        
                 </form>
             </div>
@@ -44,12 +44,14 @@ include('includes/haut.inc.php');
                     <div class="col-md-2 col-sm-2">
                       <?= date("d/m/y H:i:s", $data['date']) ?>
                     </div>
+                    <?php if($connected==true) {?>
                     <div class="col-md-1 col-sm-2">
                         <a href="suppr_message.php?id=<?php echo $data['id'] ?>"  class="btn btn-danger">Supprimer</a>
                     </div>
                     <div class="col-md-1 col-sm-2">
                         <a href="index.php?id=<?php echo $data['id'] ?>"  class="btn btn-primary">Modifier</a>
                     </div>
+                    <?php } ?>
             	</blockquote>
             </div>
 

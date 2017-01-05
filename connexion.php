@@ -51,10 +51,11 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['motdepas
 
 		header('Location:index.php');
 	}
+	else
+	{
+		header('Location:./connexion.php');
+	}
 
-
-
-	
 
 /*TRAITEMENT
 	requete sql préparée pour verif utilisateur (email, mdp)
@@ -100,7 +101,7 @@ else{
 						<div class="form-group">
 							<label class="col-md-4 control-label text-right" for="motdepasse">Mot de passe :</label>
 							<div class="col-md-8">
-								<input type="text" class="form-control" id="motdepasse" name="motdepasse" placeholder="Mot de passe">
+								<input type="password" class="form-control" id="motdepasse" name="motdepasse" placeholder="Mot de passe">
 							</div>
 						</div>
 						<div class="form-group">
@@ -110,6 +111,7 @@ else{
 						</div>
 					</form>
 				</div>
+
 				<div class="panel-footer">
 					Mot de passe perdu ? <a href="#"> Cliquez ici</a>
 				</div>
