@@ -21,7 +21,7 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['motdepas
 
 		setcookie("cookieBlog", $sid, time()+3600);
 
-		$query = 'UPDATE utilisateur SET sessionid=:sid WHERE id=:id ';
+		$query = 'UPDATE utilisateur SET sessionid=:sid WHERE utilisateur.id=:id ';
 				$prep = $pdo->prepare($query);
 				$prep->bindValue(':sid', $sid);     
 				$prep->bindValue(':id', $id);  
@@ -51,7 +51,7 @@ else{
 							<img src="img/cadenas.jpg" alt="cadenas" class="img-rounded" >
 						</div>
 					</div>
-					<form class="form-horizontal" method="POST" action="connexion.php">
+					<form class="form-horizontal" method="POST" id="form_connexion" action="connexion.php">
 						<div class="form-group" style="margin-top:20px">
 							<label class="col-md-4 control-label text-right" for="email" >Identifiant :</label>
 							<div class="col-md-8">
@@ -63,6 +63,8 @@ else{
 							<div class="col-md-8">
 								<input type="password" class="form-control" id="motdepasse" name="motdepasse" placeholder="Mot de passe">
 							</div>
+						</div>
+						<div class="col-md-8 col-md-offset-2 hidden text-center" id="msgErreur" style="color:red;font-weight:bold">
 						</div>
 						<div class="form-group">
 							<div class="col-md-8 col-md-offset-2">
@@ -79,52 +81,41 @@ else{
 		</div>
 	</div>
 
+	<script>
+		$(function(){
+			$("#form_connexion").submit(function(){
+				var pseudo=$("#pseudo").val();
+				var mdp=$("#motdepasse").val();
+
+				if($("#pseudo").val()=='')
+				{
+					$("#msgErreur").html("Veuillez saisir un pseudo !");
+					$("#msgErreur").addClass("alert alert-danger");
+					$("#msgErreur").removeClass("hidden");
+					return false;
+
+				}
+				else if(mdp=='')
+				{
+					$("#msgErreur").html("Veuillez saisir un mot de passe !");
+					$("#msgErreur").addClass("alert alert-danger");
+					$("#msgErreur").removeClass("hidden");
+					return false;
+
+				}
+				else{
+					return true;
+				}
+
+			});
+		});
+	</script>
 
 	<?php
-	/*REDIRIGE VERS CONNEXION.PHP*/
 }
 
 include('includes/bas.inc.php'); ?>
 
 
-<!--TRAITEMENT
-	requete sql préparée pour verif utilisateur (email, mdp)
-		where email=email and mdp=md5($_POST('mdp')
-
-	UTILISATION DE LA FONCTION MD5 QUAND INSERTION D'UN MOT DE PASSE DANS PHP MYADMIN !!!
-
-Génération SID
-	utilisation de md5 pour générer une grande chaine aléatoire
-		$sid=md5($_POST('email').time());
-Stockage SID cookie
-Stockage SID BDD
-	ajout champ SessionID varchar dans la table utilisateur
-
-	REDIRIGER VERS INDEX OU CONNEXION SI FAUX*/
-
-
-
-	/*$query="SELECT pseudo, mdp FROM utilisateur";
-
-	$stmt = $pdo->query($query);
-
-	while($data = $stmt->fetch())
-	{
-		$email = $data['pseudo'];
-		$mdp = $data['mdp'];
-
-		if($email == $_POST['pseudo'] && $mdp == md5($_POST['motdepasse']))
-		{
-			$sid=md5($_POST('pseudo').$_POST['motdepasse'].time());
-
-			setcookie(name)
-
-
-			header('Location:index.php');
-		}
-	}*/
-
-
--->
 
 

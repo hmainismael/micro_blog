@@ -5,7 +5,7 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(isset($_COOKIE['cookieBlog']))
 {
-	$query="SELECT sessionid, pseudo FROM utilisateur WHERE sessionid=:sid";
+	$query="SELECT sessionid, pseudo, utilisateur.id FROM utilisateur WHERE sessionid=:sid";
 
 	$prep = $pdo->prepare($query);
 	$prep->bindValue(':sid', $_COOKIE['cookieBlog']);
@@ -16,6 +16,7 @@ if(isset($_COOKIE['cookieBlog']))
 		$data=$prep->fetch();
 
 		$pseudo=$data['pseudo'];
+		$id=$data['id'];
 
 		$connected=true;
 	}
