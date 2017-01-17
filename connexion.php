@@ -4,28 +4,6 @@ include('includes/haut.inc.php');
 
 if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['motdepasse']) && !empty($_POST['motdepasse']))
 {
-
-
-	/*$query="SELECT pseudo, mdp FROM utilisateur";
-
-	$stmt = $pdo->query($query);
-
-	while($data = $stmt->fetch())
-	{
-		$email = $data['pseudo'];
-		$mdp = $data['mdp'];
-
-		if($email == $_POST['pseudo'] && $mdp == md5($_POST['motdepasse']))
-		{
-			$sid=md5($_POST('pseudo').$_POST['motdepasse'].time());
-
-			setcookie(name)
-
-
-			header('Location:index.php');
-		}
-	}*/
-
 	$query="SELECT * FROM utilisateur WHERE pseudo=:pseudo AND mdp=:motdepasse";
 
 	$prep = $pdo->prepare($query);
@@ -43,7 +21,7 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['motdepas
 
 		setcookie("cookieBlog", $sid, time()+3600);
 
-		$query = 'UPDATE utilisateur SET sessionid=:sid WHERE id=:id ';       //requête préparée :contenu = variable que je déclare
+		$query = 'UPDATE utilisateur SET sessionid=:sid WHERE id=:id ';
 				$prep = $pdo->prepare($query);
 				$prep->bindValue(':sid', $sid);     
 				$prep->bindValue(':id', $id);  
@@ -55,24 +33,6 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['motdepas
 	{
 		header('Location:./connexion.php');
 	}
-
-
-/*TRAITEMENT
-	requete sql préparée pour verif utilisateur (email, mdp)
-		where email=email and mdp=md5($_POST('mdp')
-
-	UTILISATION DE LA FONCTION MD5 QUAND INSERTION D'UN MOT DE PASSE DANS PHP MYADMIN !!!
-
-Génération SID
-	utilisation de md5 pour générer une grande chaine aléatoire
-		$sid=md5($_POST('email').time());
-Stockage SID cookie
-Stockage SID BDD
-	ajout champ SessionID varchar dans la table utilisateur
-
-	REDIRIGER VERS INDEX OU CONNEXION SI FAUX*/
-
-
 
 }
 else{
@@ -125,3 +85,46 @@ else{
 }
 
 include('includes/bas.inc.php'); ?>
+
+
+<!--TRAITEMENT
+	requete sql préparée pour verif utilisateur (email, mdp)
+		where email=email and mdp=md5($_POST('mdp')
+
+	UTILISATION DE LA FONCTION MD5 QUAND INSERTION D'UN MOT DE PASSE DANS PHP MYADMIN !!!
+
+Génération SID
+	utilisation de md5 pour générer une grande chaine aléatoire
+		$sid=md5($_POST('email').time());
+Stockage SID cookie
+Stockage SID BDD
+	ajout champ SessionID varchar dans la table utilisateur
+
+	REDIRIGER VERS INDEX OU CONNEXION SI FAUX*/
+
+
+
+	/*$query="SELECT pseudo, mdp FROM utilisateur";
+
+	$stmt = $pdo->query($query);
+
+	while($data = $stmt->fetch())
+	{
+		$email = $data['pseudo'];
+		$mdp = $data['mdp'];
+
+		if($email == $_POST['pseudo'] && $mdp == md5($_POST['motdepasse']))
+		{
+			$sid=md5($_POST('pseudo').$_POST['motdepasse'].time());
+
+			setcookie(name)
+
+
+			header('Location:index.php');
+		}
+	}*/
+
+
+-->
+
+

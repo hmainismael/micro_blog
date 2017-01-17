@@ -30,13 +30,38 @@ include('includes/haut.inc.php');
 
 
             <?php
-            $query = 'SELECT * FROM messages ORDER BY date desc';
-            $stmt = $pdo->query($query);
 
-            while ($data = $stmt->fetch()) {
+            
+
+            $nbMsg='SELECT COUNT(*) as Nombre_Messages FROM messages';
+            $statement = $pdo->query($nbMsg);
+            while ($data = $statement->fetch()) {
+                $nombre_messages=$data['Nombre_Messages'];
+            }
+
+            $MsgParPage=6;
+            $nbPages=ceil($nombre_messages/$MsgParPage);
+
+            //$page = $_GET['p'];
+            if(isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<=$nbPages)
+            {
+                $index=$_GET['p'];
+            }
+            else
+            {
+                $index=1;
+            }
+
+            $query = 'SELECT * FROM messages ORDER BY date desc LIMIT :indexDebut , :MsgParPage';
+            $prep = $pdo->prepare($query);
+            $prep->bindValue(':indexDebut',  (($index-1)*$MsgParPage), PDO::PARAM_INT);
+            $prep->bindValue(':MsgParPage', $MsgParPage, PDO::PARAM_INT);
+            $prep->execute();
+
+            while ($data = $prep->fetch()) {
             ?>
 
-            <div class="row">
+            <div class="row" style="margin-top:15px">
             	<blockquote class="col-md-12">
                     <div class="col-md-7">
             		  <?= $data['contenu'] ?>
@@ -58,5 +83,38 @@ include('includes/haut.inc.php');
 	        <?php
              }
             ?>
+            <div class="row text-center">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination pagination-lg">
+                    <?php  if($index!=1) { ?>
+                    <li>
+                      <a href="index.php?p=<?php echo $index-1; ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                      </a>
+                    </li>
+                    <?php } ?>
+                    <?php 
+                        for($i=1;$i<=$nbPages;$i++)
+                        {
+                            if($i==$index)
+                            {
+                                echo "<li><a href=\"index.php?p=$i\" style=\"color:red\">$i</a></li>";
+                            }
+                            else
+                            {
+                                echo "<li><a href=\"index.php?p=$i\">$i</a></li>";
+                            }
+                        }
+                    ?>
+                    <?php if($index!=$nbPages) { ?>
+                    <li>
+                      <a href="index.php?p=<?php echo $index+1; ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                      </a>
+                    </li>
+                    <?php } ?>
+                  </ul>
+                </nav>
+            </div>
 
 <?php include('includes/bas.inc.php'); ?>
