@@ -2,7 +2,9 @@
 $pdo = new PDO('mysql:host=localhost;dbname=micro_blog', 'root', '');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-
+/*
+    VERIFICATION DE LA PRESENCE DU COOKIE, RECUPERATION DES DONNEES LIES A CET UTILISATEUR
+*/ 
 if(isset($_COOKIE['cookieBlog']))
 {
 	$query="SELECT sessionid, pseudo, utilisateur.id FROM utilisateur WHERE sessionid=:sid";

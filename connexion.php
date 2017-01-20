@@ -2,6 +2,10 @@
 include('includes/connexion.inc.php');
 include('includes/haut.inc.php');
 
+/*
+    VERIFICATION DES ACCES DE L'UTILISATEUR
+    SI PSEUDO ET MOT DE PASSE CORRECT : REDIRECTION VERS L'INDEX SINON CHARGEMENT A NOUVEAU DE LA PAGE CONNEXION
+*/ 
 if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['motdepasse']) && !empty($_POST['motdepasse']))
 {
 	$query="SELECT * FROM utilisateur WHERE pseudo=:pseudo AND mdp=:motdepasse";
@@ -17,6 +21,10 @@ if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['motdepas
 
 		$id=$data['id'];
 
+		/*
+		    CREATION D'UN COOKIE CONTENANT POUR VALEUR UN SID COMPOSE DES ACCES DE LA PERSONNE CONCATENES AVEC LA FONCTION TIME() DE PHP
+		    ENREGISTREMENT EN BDD DU SID
+		*/ 
 		$sid=md5($_POST['pseudo'].$_POST['motdepasse'].time());
 
 		setcookie("cookieBlog", $sid, time()+3600);
@@ -54,13 +62,13 @@ else{
 					<form class="form-horizontal" method="POST" id="form_connexion" action="connexion.php">
 						<div class="form-group" style="margin-top:20px">
 							<label class="col-md-4 control-label text-right" for="email" >Identifiant :</label>
-							<div class="col-md-8">
+							<div class="col-md-8" id="pseudoDIV">
 								<input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Email">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label text-right" for="motdepasse">Mot de passe :</label>
-							<div class="col-md-8">
+							<div class="col-md-8" id="motdepasseDIV">
 								<input type="password" class="form-control" id="motdepasse" name="motdepasse" placeholder="Mot de passe">
 							</div>
 						</div>
@@ -82,23 +90,29 @@ else{
 	</div>
 
 	<script>
+		/*
+	    	PARTIE JQUERY UTILISE POUR VERIFIER REMPLISSAGE DES CHAMPS
+		*/ 
 		$(function(){
 			$("#form_connexion").submit(function(){
-				var pseudo=$("#pseudo").val();
-				var mdp=$("#motdepasse").val();
 
-				if($("#pseudo").val()=='')
+				$("#pseudoDIV").removeClass("has-error");
+				$("#motdepasseDIV").removeClass("has-error");
+
+				if( $("#pseudo").val() == '')
 				{
 					$("#msgErreur").html("Veuillez saisir un pseudo !");
 					$("#msgErreur").addClass("alert alert-danger");
+					$("#pseudoDIV").addClass("has-error");
 					$("#msgErreur").removeClass("hidden");
 					return false;
 
 				}
-				else if(mdp=='')
+				else if( $("#motdepasse").val() == '')
 				{
 					$("#msgErreur").html("Veuillez saisir un mot de passe !");
 					$("#msgErreur").addClass("alert alert-danger");
+					$("#motdepasseDIV").addClass("has-error");
 					$("#msgErreur").removeClass("hidden");
 					return false;
 

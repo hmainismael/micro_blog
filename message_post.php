@@ -1,6 +1,11 @@
 <?php
 include('includes/connexion.inc.php');
 
+	/*
+		GESTION DES MESSAGES
+		SI MODIFICATION -VERIFICATION DES VARIABLES PASSES EN POST- , MISE A JOUR EN BDD
+		SI CREATION, INSERTION EN BDD
+	*/
 	if(isset($_POST['id']) && !empty($_POST['id']))
 	{
 		$query ='UPDATE messages SET contenu= :contenu , date=UNIX_TIMESTAMP() WHERE messages.id=:id';   
