@@ -26,4 +26,6 @@ if(isset($_COOKIE['cookieBlog']))
 else
 {
 	$connected=false;
+	$pseudo='';
+	$id='';
 }
