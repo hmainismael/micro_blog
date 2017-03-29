@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-28 16:21:24
+/* Smarty version 3.1.30, created on 2017-03-29 13:45:40
   from "C:\wamp\www\IUT\micro_blog_smarty\templates\index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58b595740edd35_14404586',
+  'unifunc' => 'content_58db9e646530a0_52075519',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '2146e76ddb2fd4c7af37f237804cea0cdcbaf1cc' => 
     array (
       0 => 'C:\\wamp\\www\\IUT\\micro_blog_smarty\\templates\\index.tpl',
-      1 => 1488294915,
+      1 => 1489525638,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:includes/bas.inc.tpl' => 1,
   ),
 ),false)) {
-function content_58b595740edd35_14404586 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58db9e646530a0_52075519 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once 'C:\\wamp\\www\\IUT\\micro_blog_smarty\\tpl\\plugins\\modifier.date_format.php';
 $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -34,7 +34,7 @@ $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cac
             </div>
             <?php }?>
             <div class="row text-center" style="margin-bottom:25px">
-                <form class="form-horizontal" method="POST" id="form_recherche" action="index.php">   
+                <form class="form-horizontal" method="GET" id="form_recherche" action="index.php">   
                     <div class="col-md-4 col-md-offset-3">
                         <div class="form-group">
                             <div class="input-group">
@@ -69,6 +69,20 @@ $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cac
                 </form>
             </div>
 
+            <div class="row hidden" id="apercuModification"> 
+                <div class="row">
+                    <div class="col-sm-3 col-sm-offset-2">
+                        <span class="label label-info">Aperçu de votre message</span>
+                    </div>
+                </div>
+                <div class="row">   
+                    <div class="col-sm-6 col-sm-offset-2">  
+                        <div class="alert alert-info" role="alert" id="messageModif">
+                        </div>
+                    </div>
+                </div>              
+            </div>
+
 
             <!--
                 MESSAGES DE LA PAGE AVEC ACTIVATION DES BOUTONS MODIFIER ET SUPPRIMER UNIQUEMENT S'ILS SONT EDITES PAR L'UTILISATEUR CONCERNE
@@ -95,7 +109,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['message']->value) {
                     </div>
                     <div class="col-md-1 col-sm-2">
                         <a href="index.php?id=<?php echo $_smarty_tpl->tpl_vars['message']->value['id_msg'];?>
-"  class="btn btn-primary" <?php if ($_smarty_tpl->tpl_vars['message']->value['user_id'] != $_smarty_tpl->tpl_vars['id']->value) {?>disabled<?php }?> >Modifier</a>
+" id="btnModifier" class="btn btn-primary" <?php if ($_smarty_tpl->tpl_vars['message']->value['user_id'] != $_smarty_tpl->tpl_vars['id']->value) {?>disabled<?php }?> >Modifier</a>
                     </div>
                     <?php }?>
                 </blockquote>
@@ -159,5 +173,34 @@ $_smarty_tpl->tpl_vars['i']->first = $_smarty_tpl->tpl_vars['i']->iteration == 1
 
 
 <?php $_smarty_tpl->_subTemplateRender("file:includes/bas.inc.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
-}
+?>
+
+
+    <?php echo '<script'; ?>
+>
+        $(function(){
+            $("#message").on('keyup',function(){
+
+                $("#apercuModification").removeClass('hidden');
+
+                $.get(
+                    'apercu_msg.php',
+                    {
+                        message: $('#message').val(),
+                    },
+                    function(data){
+                        $('#messageModif').html(data);
+                });
+
+                /*désactiver les liens sur le clic*/
+
+            });
+
+            
+
+        });
+
+
+    <?php echo '</script'; ?>
+><?php }
 }

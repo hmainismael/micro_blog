@@ -6,7 +6,7 @@
             </div>
             {/if}
             <div class="row text-center" style="margin-bottom:25px">
-                <form class="form-horizontal" method="POST" id="form_recherche" action="index.php">   
+                <form class="form-horizontal" method="GET" id="form_recherche" action="index.php">   
                     <div class="col-md-4 col-md-offset-3">
                         <div class="form-group">
                             <div class="input-group">
@@ -39,6 +39,20 @@
                 </form>
             </div>
 
+            <div class="row hidden" id="apercuModification"> 
+                <div class="row">
+                    <div class="col-sm-3 col-sm-offset-2">
+                        <span class="label label-info">Aperçu de votre message</span>
+                    </div>
+                </div>
+                <div class="row">   
+                    <div class="col-sm-6 col-sm-offset-2">  
+                        <div class="alert alert-info" role="alert" id="messageModif">
+                        </div>
+                    </div>
+                </div>              
+            </div>
+
 
             <!--
                 MESSAGES DE LA PAGE AVEC ACTIVATION DES BOUTONS MODIFIER ET SUPPRIMER UNIQUEMENT S'ILS SONT EDITES PAR L'UTILISATEUR CONCERNE
@@ -57,7 +71,7 @@
                         <a href="suppr_message.php?id={$message.id_msg}"  class="btn btn-danger" {if $message.user_id != $id}disabled{/if} >Supprimer</a>
                     </div>
                     <div class="col-md-1 col-sm-2">
-                        <a href="index.php?id={$message.id_msg}"  class="btn btn-primary" {if $message.user_id != $id}disabled{/if} >Modifier</a>
+                        <a href="index.php?id={$message.id_msg}" id="btnModifier" class="btn btn-primary" {if $message.user_id != $id}disabled{/if} >Modifier</a>
                     </div>
                     {/if}
                 </blockquote>
@@ -102,3 +116,29 @@
 
 
 {include file='includes/bas.inc.tpl'}
+
+    <script>
+        $(function(){
+            $("#message").on('keyup',function(){
+
+                $("#apercuModification").removeClass('hidden');
+
+                $.get(
+                    'apercu_msg.php',
+                    {
+                        message: $('#message').val(),
+                    },
+                    function(data){
+                        $('#messageModif').html(data);
+                });
+
+                /*désactiver les liens sur le clic*/
+
+            });
+
+            
+
+        });
+
+
+    </script>

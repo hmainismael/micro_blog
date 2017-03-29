@@ -1,5 +1,6 @@
 <?php
 include('includes/connexion.inc.php');
+include('./majMessage.php');
 
 
 require("tpl/smarty.class.php"); // On inclut la classe Smarty
@@ -29,9 +30,9 @@ else
 }
 
 /*****************************************************************************************/
-if(isset($_POST['texteRecherche']))
+if(isset($_GET['texteRecherche']))
 {   
-    $texteRecherche=$_POST['texteRecherche'];
+    $texteRecherche=$_GET['texteRecherche'];
 }
 else
 {
@@ -91,6 +92,9 @@ while ($data = $prep->fetch()) {
     $listeMessages[$i]['pseudo_user']=$data['pseudo_user'];
     $listeMessages[$i]['contenu_msg']=$data['contenu_msg'];
     $listeMessages[$i]['date_msg']=$data['date_msg'];
+
+    $listeMessages[$i]['contenu_msg']=apercuMessage($listeMessages[$i]['contenu_msg']);
+
     $i++;
 }
 
@@ -109,4 +113,8 @@ $tpl->assign(array(
 
 $tpl->display("templates/index.tpl");
 
+
+
+
 ?>
+
