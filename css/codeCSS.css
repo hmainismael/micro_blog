@@ -1,0 +1,76 @@
+#pseudoUser
+{
+	color:white;
+	font-size:2em;
+}
+.msgErreur
+{
+	color:red;
+	font-weight:bold;
+}
+#errorLog
+{
+	color:red;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+#pseudoAlreadyExists
+{
+	color:red;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+#auteurMsg
+{
+	color:blue;
+}
+#blocMessages
+{
+	margin-top:15px;
+}
+#pageEnCours
+{
+	color:red;
+}
+#btnAfficherAllMessages
+{
+	margin-bottom:15px;
+}
+#zoneDeRecherche
+{
+	margin-bottom:25px;
+}
+#champsFormInscription
+{
+	margin-top:20px;
+}
+.liensRS
+{
+	font-weight: bold;
+	padding-left: 0px;
+	font-size: 1.5em;
+}
+.icon
+{
+	display: inline-block;
+	width: 48px;
+	height: 48px;
+	background-image: url('../assets/img/redes.png');
+	margin-bottom: -15px;
+}
+.facebook
+{
+	background-position: -48px 48px;
+}
+.facebook:hover
+{
+	background-position: -48px 0px;
+}
+.twitter
+{
+	background-position: -144px 144px;
+}
+.twitter:hover
+{
+	background-position: -144px 0px;
+}

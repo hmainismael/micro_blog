@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-28 16:15:25
+/* Smarty version 3.1.30, created on 2017-04-17 17:17:10
   from "C:\wamp\www\IUT\micro_blog_smarty\includes\haut.inc.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58b5940d073e81_72668336',
+  'unifunc' => 'content_58f4dc7609e446_78932570',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '96d86779d4aaba5f70063413d0720c55e9847f19' => 
     array (
       0 => 'C:\\wamp\\www\\IUT\\micro_blog_smarty\\includes\\haut.inc.tpl',
-      1 => 1488294805,
+      1 => 1492442227,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58b5940d073e81_72668336 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58f4dc7609e446_78932570 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,17 +34,15 @@ function content_58b5940d073e81_72668336 (Smarty_Internal_Template $_smarty_tpl)
 
     <title>Micro blog</title>
 
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/freelancer.css" rel="stylesheet">
-
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--<link href="min/?f=micro_blog_smarty/css/freelancer.css" rel="stylesheet">-->
+    <!--<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <?php echo '<script'; ?>
- src="js/jquery-3.1.0.min.js"><?php echo '</script'; ?>
->
-
+    <link href="css/codeCSS.css" rel="stylesheet">
 </head>
 
 <body id="page-top" class="index">
@@ -83,12 +81,12 @@ function content_58b5940d073e81_72668336 (Smarty_Internal_Template $_smarty_tpl)
                 <!--
                     AFFICHAGE DU PSEUDO DE L'UTILISATEUR CONNECTE
                 -->
-            <?php if ($_smarty_tpl->tpl_vars['connected']->value) {?>
-            <div class="row text-center" style="color:white;font-size:2em">
-                Hello <?php echo $_smarty_tpl->tpl_vars['pseudo']->value;?>
+                <?php if ($_smarty_tpl->tpl_vars['connected']->value) {?>
+                <div class="row text-center" id="pseudoUser">
+                    Hello <?php echo $_smarty_tpl->tpl_vars['pseudo']->value;?>
  !
-            </div>
-            <?php }?>
+                </div>
+                <?php }?>
             </div>
         </div>
     </nav>

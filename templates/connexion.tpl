@@ -27,9 +27,9 @@
 								<input type="password" class="form-control" id="motdepasse" name="motdepasse" placeholder="Mot de passe">
 							</div>
 						</div>
-						<div class="col-md-8 col-md-offset-2 hidden text-center" id="msgErreur" style="color:red;font-weight:bold"></div>
+						<div class="col-md-8 col-md-offset-2 hidden text-center msgErreur"></div>
 						{if $error}
-							<div class="col-md-8 col-md-offset-2 text-center" style="color:red;font-weight:bold;margin-bottom:10px">Votre identifiant ou mot de passe est incorrect !</div>
+							<div class="col-md-8 col-md-offset-2 text-center" id="errorLog">Votre identifiant ou mot de passe est incorrect !</div>
 						{/if}
 						<div class="form-group">
 							<div class="col-md-8 col-md-offset-2">
@@ -48,41 +48,7 @@
 
 {include file='includes/bas.inc.tpl'}
 
-	<script>
-		/*
-	    	PARTIE JQUERY UTILISE POUR VERIFIER REMPLISSAGE DES CHAMPS
-		*/ 
-		$(function(){
-			$("#form_connexion").submit(function(){
 
-				$("#pseudoDIV").removeClass("has-error");
-				$("#motdepasseDIV").removeClass("has-error");
-
-				if( $("#pseudo").val() == '')
-				{
-					$("#msgErreur").html("Veuillez saisir un pseudo !");
-					$("#msgErreur").addClass("alert alert-danger");
-					$("#pseudoDIV").addClass("has-error");
-					$("#msgErreur").removeClass("hidden");
-					return false;
-
-				}
-				else if( $("#motdepasse").val() == '')
-				{
-					$("#msgErreur").html("Veuillez saisir un mot de passe !");
-					$("#msgErreur").addClass("alert alert-danger");
-					$("#motdepasseDIV").addClass("has-error");
-					$("#msgErreur").removeClass("hidden");
-					return false;
-
-				}
-				else{
-					return true;
-				}
-
-			});
-		});
-	</script>
 
 
 

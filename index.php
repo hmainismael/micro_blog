@@ -73,7 +73,8 @@ $query = 'SELECT    M.id as id_msg,
                     U.id as user_id, 
                     M.date as date_msg, 
                     M.contenu as contenu_msg, 
-                    U.pseudo as pseudo_user 
+                    U.pseudo as pseudo_user,
+                    M.votes as votes
                     FROM messages M 
                     INNER JOIN utilisateur U ON U.id=M.user_id 
                     WHERE contenu LIKE \'%'.$texteRecherche.'%\'
@@ -92,6 +93,7 @@ while ($data = $prep->fetch()) {
     $listeMessages[$i]['pseudo_user']=$data['pseudo_user'];
     $listeMessages[$i]['contenu_msg']=$data['contenu_msg'];
     $listeMessages[$i]['date_msg']=$data['date_msg'];
+    $listeMessages[$i]['votes']=$data['votes'];
 
     $listeMessages[$i]['contenu_msg']=apercuMessage($listeMessages[$i]['contenu_msg']);
 

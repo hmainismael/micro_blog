@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-28 16:15:25
+/* Smarty version 3.1.30, created on 2017-03-29 17:52:27
   from "C:\wamp\www\IUT\micro_blog_smarty\includes\bas.inc.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58b5940d1255e1_23476041',
+  'unifunc' => 'content_58dbd83b64c368_66208076',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '60d17c45f8438702e7c6c5245da3a5ee9bdf1fe8' => 
     array (
       0 => 'C:\\wamp\\www\\IUT\\micro_blog_smarty\\includes\\bas.inc.tpl',
-      1 => 1488294804,
+      1 => 1490802708,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58b5940d1255e1_23476041 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58dbd83b64c368_66208076 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
         </div>
@@ -37,8 +37,10 @@ function content_58b5940d1255e1_23476041 (Smarty_Internal_Template $_smarty_tpl)
                         <p>3481 Melrose Place
                             <br>Beverly Hills, CA 90210</p>
                     </div>
-                    <div class="footer-col col-md-4">
-                        
+                    <div class="footer-col col-md-4 text-center liensRS">
+                        Suivez nous sur :
+                        <a href="http://www.facebook.com" class="icon facebook" target="_blank"></a>
+                        <a href="http://www.twitter.com" class="icon twitter" target="_blank"></a>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>A propos</h3>
@@ -66,13 +68,19 @@ function content_58b5940d1255e1_23476041 (Smarty_Internal_Template $_smarty_tpl)
     </div>
 
     <!-- jQuery -->
-    <?php echo '<script'; ?>
+    <!--<?php echo '<script'; ?>
  src="vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
+>-->
+    <?php echo '<script'; ?>
+ src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"><?php echo '</script'; ?>
 >
 
     <!-- Bootstrap Core JavaScript -->
-    <?php echo '<script'; ?>
+    <!--<?php echo '<script'; ?>
  src="vendor/bootstrap/js/bootstrap.min.js"><?php echo '</script'; ?>
+>-->
+    <?php echo '<script'; ?>
+ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
 
     <!-- Plugin JavaScript -->
@@ -83,6 +91,10 @@ function content_58b5940d1255e1_23476041 (Smarty_Internal_Template $_smarty_tpl)
     <!-- Theme JavaScript -->
     <?php echo '<script'; ?>
  src="js/freelancer.min.js"><?php echo '</script'; ?>
+>
+
+    <?php echo '<script'; ?>
+ src="js/codeJS.js"><?php echo '</script'; ?>
 >
 
 </body>

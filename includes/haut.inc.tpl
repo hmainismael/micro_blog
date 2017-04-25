@@ -10,15 +10,15 @@
 
     <title>Micro blog</title>
 
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/freelancer.css" rel="stylesheet">
-
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!--<link href="min/?f=micro_blog_smarty/css/freelancer.css" rel="stylesheet">-->
+    <!--<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <script src="js/jquery-3.1.0.min.js"></script>
-
+    <link href="css/codeCSS.css" rel="stylesheet">
 </head>
 
 <body id="page-top" class="index">
@@ -57,11 +57,11 @@
                 <!--
                     AFFICHAGE DU PSEUDO DE L'UTILISATEUR CONNECTE
                 -->
-            {if $connected}
-            <div class="row text-center" style="color:white;font-size:2em">
-                Hello {$pseudo} !
-            </div>
-            {/if}
+                {if $connected}
+                <div class="row text-center" id="pseudoUser">
+                    Hello {$pseudo} !
+                </div>
+                {/if}
             </div>
         </div>
     </nav>

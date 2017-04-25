@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-28 16:26:25
+/* Smarty version 3.1.30, created on 2017-03-29 16:58:19
   from "C:\wamp\www\IUT\micro_blog_smarty\templates\inscription.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58b596a12f2230_36780359',
+  'unifunc' => 'content_58dbcb8bbb49a0_90220156',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4d0cc9d5de4bde241b77a1d8c3987469312c97f0' => 
     array (
       0 => 'C:\\wamp\\www\\IUT\\micro_blog_smarty\\templates\\inscription.tpl',
-      1 => 1488295477,
+      1 => 1490799434,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:includes/bas.inc.tpl' => 1,
   ),
 ),false)) {
-function content_58b596a12f2230_36780359 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58dbcb8bbb49a0_90220156 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -42,7 +42,7 @@ $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cac
 						</div>
 					</div>
 					<form class="form-horizontal" method="POST" id="form_inscription" action="inscription.php">
-						<div class="form-group" style="margin-top:20px">
+						<div class="form-group" id="champsFormInscription">
 							<label class="col-md-4 control-label text-right" for="nom" >Nom :</label>
 							<div class="col-md-7">
 								<input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
@@ -75,12 +75,12 @@ $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cac
 						<!--
 							DIV QUI S'AFFICHERA SI DES CHAMPS NE SONT PAS REMPLIS, AFFICHAGE GRACE A JQUERY
 						-->
-						<div class="col-md-8 col-md-offset-2 hidden text-center" id="msgErreur" style="color:red;font-weight:bold"></div>
+						<div class="col-md-8 col-md-offset-2 hidden text-center msgErreur"></div>
 						<!--
 							DIV QUI S'AFFICHERA SI LE PSEUDO SAISI EXISTE DEJA
 						-->
 						<?php if ($_smarty_tpl->tpl_vars['pseudoExists']->value) {?>
-							<div class="col-md-8 col-md-offset-2 text-center" style="color:red;font-weight:bold;margin-bottom:10px">PSEUDO EXISTANT !</div>
+							<div class="col-md-8 col-md-offset-2 text-center" id="pseudoAlreadyExists">PSEUDO EXISTANT !</div>
 						<?php }?>
 						<div class="form-group">
 							<div class="col-md-8 col-md-offset-2">
@@ -97,30 +97,7 @@ $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cac
 ?>
 
 
-	<?php echo '<script'; ?>
->
-		/*
-			VERIFICATION QUE TOUS LES CHAMPS DU FORMULAIRE D'INSCRIPTION SONT SAISIS
-		*/
-		$(function(){
-			$("#form_inscription").submit(function(){
 
-				if( $("#nom").val() == '' || $("#prenom").val() == '' || $("#mail").val() == '' || $("#pseudo").val() == '' || $("#motdepasse").val() == '' )
-				{
-					$("#msgErreur").html("Tous les champs sont obligatoires !");
-					$("#msgErreur").addClass("alert alert-danger");
-					$("#msgErreur").removeClass("hidden");
-					return false;
-				}
-				else
-				{
-					return true;
-				}
-
-			});
-		});
-	<?php echo '</script'; ?>
->
 
 
 

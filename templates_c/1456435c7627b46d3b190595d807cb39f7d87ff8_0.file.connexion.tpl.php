@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-28 16:21:11
+/* Smarty version 3.1.30, created on 2017-03-29 16:59:17
   from "C:\wamp\www\IUT\micro_blog_smarty\templates\connexion.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58b595671eb167_04281343',
+  'unifunc' => 'content_58dbcbc5dfcec4_02452542',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '1456435c7627b46d3b190595d807cb39f7d87ff8' => 
     array (
       0 => 'C:\\wamp\\www\\IUT\\micro_blog_smarty\\templates\\connexion.tpl',
-      1 => 1488294802,
+      1 => 1490799071,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:includes/bas.inc.tpl' => 1,
   ),
 ),false)) {
-function content_58b595671eb167_04281343 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58dbcbc5dfcec4_02452542 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -54,9 +54,9 @@ $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cac
 								<input type="password" class="form-control" id="motdepasse" name="motdepasse" placeholder="Mot de passe">
 							</div>
 						</div>
-						<div class="col-md-8 col-md-offset-2 hidden text-center" id="msgErreur" style="color:red;font-weight:bold"></div>
+						<div class="col-md-8 col-md-offset-2 hidden text-center msgErreur"></div>
 						<?php if ($_smarty_tpl->tpl_vars['error']->value) {?>
-							<div class="col-md-8 col-md-offset-2 text-center" style="color:red;font-weight:bold;margin-bottom:10px">Votre identifiant ou mot de passe est incorrect !</div>
+							<div class="col-md-8 col-md-offset-2 text-center" id="errorLog">Votre identifiant ou mot de passe est incorrect !</div>
 						<?php }?>
 						<div class="form-group">
 							<div class="col-md-8 col-md-offset-2">
@@ -77,43 +77,7 @@ $_smarty_tpl->_subTemplateRender("file:includes/haut.inc.tpl", $_smarty_tpl->cac
 ?>
 
 
-	<?php echo '<script'; ?>
->
-		/*
-	    	PARTIE JQUERY UTILISE POUR VERIFIER REMPLISSAGE DES CHAMPS
-		*/ 
-		$(function(){
-			$("#form_connexion").submit(function(){
 
-				$("#pseudoDIV").removeClass("has-error");
-				$("#motdepasseDIV").removeClass("has-error");
-
-				if( $("#pseudo").val() == '')
-				{
-					$("#msgErreur").html("Veuillez saisir un pseudo !");
-					$("#msgErreur").addClass("alert alert-danger");
-					$("#pseudoDIV").addClass("has-error");
-					$("#msgErreur").removeClass("hidden");
-					return false;
-
-				}
-				else if( $("#motdepasse").val() == '')
-				{
-					$("#msgErreur").html("Veuillez saisir un mot de passe !");
-					$("#msgErreur").addClass("alert alert-danger");
-					$("#motdepasseDIV").addClass("has-error");
-					$("#msgErreur").removeClass("hidden");
-					return false;
-
-				}
-				else{
-					return true;
-				}
-
-			});
-		});
-	<?php echo '</script'; ?>
->
 
 
 

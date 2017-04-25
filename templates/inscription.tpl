@@ -15,7 +15,7 @@
 						</div>
 					</div>
 					<form class="form-horizontal" method="POST" id="form_inscription" action="inscription.php">
-						<div class="form-group" style="margin-top:20px">
+						<div class="form-group" id="champsFormInscription">
 							<label class="col-md-4 control-label text-right" for="nom" >Nom :</label>
 							<div class="col-md-7">
 								<input type="text" class="form-control" id="nom" name="nom" placeholder="Nom">
@@ -48,12 +48,12 @@
 						<!--
 							DIV QUI S'AFFICHERA SI DES CHAMPS NE SONT PAS REMPLIS, AFFICHAGE GRACE A JQUERY
 						-->
-						<div class="col-md-8 col-md-offset-2 hidden text-center" id="msgErreur" style="color:red;font-weight:bold"></div>
+						<div class="col-md-8 col-md-offset-2 hidden text-center msgErreur"></div>
 						<!--
 							DIV QUI S'AFFICHERA SI LE PSEUDO SAISI EXISTE DEJA
 						-->
 						{if $pseudoExists}
-							<div class="col-md-8 col-md-offset-2 text-center" style="color:red;font-weight:bold;margin-bottom:10px">PSEUDO EXISTANT !</div>
+							<div class="col-md-8 col-md-offset-2 text-center" id="pseudoAlreadyExists">PSEUDO EXISTANT !</div>
 						{/if}
 						<div class="form-group">
 							<div class="col-md-8 col-md-offset-2">
@@ -68,28 +68,7 @@
 
 {include file='includes/bas.inc.tpl'}
 
-	<script>
-		/*
-			VERIFICATION QUE TOUS LES CHAMPS DU FORMULAIRE D'INSCRIPTION SONT SAISIS
-		*/
-		$(function(){
-			$("#form_inscription").submit(function(){
 
-				if( $("#nom").val() == '' || $("#prenom").val() == '' || $("#mail").val() == '' || $("#pseudo").val() == '' || $("#motdepasse").val() == '' )
-				{
-					$("#msgErreur").html("Tous les champs sont obligatoires !");
-					$("#msgErreur").addClass("alert alert-danger");
-					$("#msgErreur").removeClass("hidden");
-					return false;
-				}
-				else
-				{
-					return true;
-				}
-
-			});
-		});
-	</script>
 
 
 

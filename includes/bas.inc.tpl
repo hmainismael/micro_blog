@@ -13,8 +13,10 @@
                         <p>3481 Melrose Place
                             <br>Beverly Hills, CA 90210</p>
                     </div>
-                    <div class="footer-col col-md-4">
-                        
+                    <div class="footer-col col-md-4 text-center liensRS">
+                        Suivez nous sur :
+                        <a href="http://www.facebook.com" class="icon facebook" target="_blank"></a>
+                        <a href="http://www.twitter.com" class="icon twitter" target="_blank"></a>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>A propos</h3>
@@ -42,16 +44,20 @@
     </div>
 
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <!--<script src="vendor/jquery/jquery.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--<script src="vendor/bootstrap/js/bootstrap.min.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
+
+    <script src="js/codeJS.js"></script>
 
 </body>
 

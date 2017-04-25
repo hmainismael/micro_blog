@@ -1,11 +1,11 @@
 {include file='includes/haut.inc.tpl'}
  
             {if $texteRecherche != ''}
-            <div class="row text-center" style="margin-bottom:15px">
+            <div class="row text-center" id="btnAfficherAllMessages">
                 <a href="index.php" role="button" type="button" class="btn btn-info">Afficher tous les messages</a>
             </div>
             {/if}
-            <div class="row text-center" style="margin-bottom:25px">
+            <div class="row text-center" id="zoneDeRecherche">
                 <form class="form-horizontal" method="GET" id="form_recherche" action="index.php">   
                     <div class="col-md-4 col-md-offset-3">
                         <div class="form-group">
@@ -71,20 +71,27 @@
                         <a href="suppr_message.php?id={$message.id_msg}"  class="btn btn-danger" {if $message.user_id != $id}disabled{/if} >Supprimer</a>
                     </div>
                     <div class="col-md-1 col-sm-2">
-                        <a href="index.php?id={$message.id_msg}" id="btnModifier" class="btn btn-primary" {if $message.user_id != $id}disabled{/if} >Modifier</a>
+                        <a href="index.php?id={$message.id_msg}" id="btnModifier" class="btn btn-warning" {if $message.user_id != $id}disabled{/if} >Modifier</a>
                     </div>
                     {/if}
                 </blockquote>
             </div>
-            <div class="row text-center" style="color:blue">
-                <span class="badge" style="font-size:1.2em">Auteur : {$message.pseudo_user|upper}</span>
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-4">
+                    <button class="btn btn-primary btn-sm btnJaime" type="button">
+                      <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> J'aime <span class="badge nbJaime"  data-id={$message.id_msg}>{$message.votes}</span>
+                    </button>
+                </div>
+                <div class="col-sm-2 col-sm-offset-3" id="auteurMsg">
+                 <span class="badge" style="font-size:1.0em">Auteur : {$message.pseudo_user|upper}</span>
+                </div>
             </div>
             {/foreach}
 
             <!--
                 PAGINATION SITUEE EN BAS DE PAGE
             -->
-            <div class="row text-center" style="margin-top:15px">
+            <div class="row text-center" id="blocMessages">
                 <nav aria-label="Page navigation">
                   <ul class="pagination pagination-lg">
                     {if $index != 1}
@@ -97,7 +104,7 @@
 
                     {for $i=1 to $nbPages}
                         {if $i eq $index}
-                            <li><a href="index.php?p={$i}" style="color:red">{$i}</a></li>
+                            <li><a href="index.php?p={$i}" id="pageEnCours">{$i}</a></li>
                         {else}
                             <li><a href="index.php?p={$i}">{$i}</a></li>
                         {/if}
@@ -116,29 +123,3 @@
 
 
 {include file='includes/bas.inc.tpl'}
-
-    <script>
-        $(function(){
-            $("#message").on('keyup',function(){
-
-                $("#apercuModification").removeClass('hidden');
-
-                $.get(
-                    'apercu_msg.php',
-                    {
-                        message: $('#message').val(),
-                    },
-                    function(data){
-                        $('#messageModif').html(data);
-                });
-
-                /*désactiver les liens sur le clic*/
-
-            });
-
-            
-
-        });
-
-
-    </script>
