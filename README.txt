@@ -1,16 +1,26 @@
-Outils utilisés pour cette application :
+Outils utilisÃ©s pour cette application :
 -Bootstrap
 -Languages : PHP, HTML, CSS, JQuery
 
-Fonctionnalités de l'application :
--Inscription d'un utilisateur
--Connexion de l'utilisateur
--Editer et envoyer des messages (uniquement pour les utilisateurs inscrits et connectés)
--Modifier des messages (uniquement pour les utilisateurs inscrits, connectés et qui ont édité eux-mêmes le message)
--Supprimer des messages (uniquement pour les utilisateurs inscrits, connectés et qui ont édité eux-mêmes le message)
--Barre de recherche (recherche effectuée uniquement sur le contenu des messages publiés)
--Pagination (6 messages par page)
+1Ã¨re partie  :
 
-Ergonomie :
--Formulaire d'inscription responsive
+  FonctionnalitÃ©s de l'application :
+  -Inscription d'un utilisateur
+  -Connexion de l'utilisateur
+  -Editer et envoyer des messages (uniquement pour les utilisateurs inscrits et connectÃ©s)
+  -Modifier des messages (uniquement pour les utilisateurs inscrits, connectÃ©s et qui ont Ã©ditÃ© eux-mÃªmes le message)
+  -Supprimer des messages (uniquement pour les utilisateurs inscrits, connectÃ©s et qui ont Ã©ditÃ© eux-mÃªmes le message)
+  -Barre de recherche (recherche effectuÃ©e uniquement sur le contenu des messages publiÃ©s)
+  -Pagination (6 messages par page)
+
+2Ã¨me partie :
+
+  -Ajout des mÃ©thodes d'optimisation (sprites CSS)
+  -Pas de JS/CSS inline
+  -JS en bas de page et/ou fichier Ã  part
+  -CDN pour les librairies
+  -Ajout du bouton de vote pour un msg avec incrÃ©mentation de sa valeur
+  -AperÃ§u du message en cours d'Ã©criture
+  -IntÃ©gration des expressions rÃ©guliÃ¨res
+  -Enregistrement des adresses IP utilisateurs
 
